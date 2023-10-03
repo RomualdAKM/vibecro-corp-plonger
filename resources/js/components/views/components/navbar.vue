@@ -1,5 +1,5 @@
 <template>
-  <div>
+ <div>
     <nav class="navbar" :class="{ 'fixed-nav': isMenuOpen || isScrolled }" style="background-color: #144669; color: aliceblue;">
       <!-- Placer le logo ici -->
       <div class="logo">
@@ -8,10 +8,10 @@
       </div>
       <button class="menu-toggle" @click="toggleMenu">Menu</button>
       <ul class="navbar-menu" :class="{ 'show-menu': isMenuOpen }">
-        <li><a href="#acc" style="color: aliceblue;">Accueil</a></li>
-        <li><a href="#propos" style="color: aliceblue;">A Propos</a></li>
-        <li><a href="#temoignage" style="color: aliceblue;">Témoignage</a></li>
-        <li><a href="#contact" style="color: aliceblue;">Contact</a></li>
+        <li><a href="#acc" style="color: aliceblue;"><i class="fas fa-home"></i> Accueil</a></li>
+        <li><a href="#propos" style="color: aliceblue;"><i class="fas fa-info"></i> À Propos</a></li>
+        <li><a href="#temoignage" style="color: aliceblue;"><i class="fas fa-comments"></i> Témoignage</a></li>
+        <li><a href="#contact" style="color: aliceblue;"><i class="fas fa-envelope"></i> Contact</a></li>
       </ul>
     </nav>
     <!-- Your page content here -->

@@ -2,8 +2,8 @@
     <div class="testimonials-inner pt-100 pb-70" id="temoignage">
       <div class="container">
         <div class="section-title text-center mb-50">
-          <span>Testimonials</span>
-          <h2>What Our Client's Say About Us</h2>
+          <span>Témoignages</span>
+          <h2>Témoignages de nos clients sur nous</h2>
         </div>
         <div class="row">
           <div class="col-lg-6">

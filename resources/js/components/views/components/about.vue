@@ -15,8 +15,8 @@
           </div>
           <div class="col-lg-7">
             <div class="about-content">
-              <span>About Us</span>
-              <h2>Dobby is a Private Service Since 2009</h2>
+              <span>A Propos</span>
+              <h2>Lorem ipsum dolor sit amet, consectetur</h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
                 lobortis eros id urna sollicitudin feugiat. In imperdiet at dui
@@ -41,9 +41,9 @@
                 fermentum. Duis id risus erat. Donec laoreet ante nunc, in
                 maximus mauris bibendum sit amet.
               </p>
-              <div class="about-more-btn">
+              <!-- <div class="about-more-btn">
                 <a href="about.html" class="default-btn4">Read More</a>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

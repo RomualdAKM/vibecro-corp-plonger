@@ -6,22 +6,20 @@
             <div class="row align-items-center">
               <div class="col-lg-6">
                 <div class="banner-content">
-                  <h1>MAKE YOUR DRIVE FOR NEXT LEVEL</h1>
+                  <h1>LOREM IPSUM DOLOR SIT</h1>
                   <p>
-                    The introduced now, the they expect, animals the desk, and
-                    catch temple. More seven my couldn't it the character using
-                    recommended. Fees, more the them. Saw and deep classes
-                    create it brief.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elitsed do eiusmod tempor incididunt ut 
+                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                    nisi ut aliquip ex ea commodo consequat. 
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                   </p>
-                  <div class="banner-btn">
-                    <a href="#" class="banner-btn1 border-radius"
-                      >Explore More</a
-                    >
-                    <a
-                      href="#contact"
-                      class="banner-btn2 border-radius ml-20"
-                      >Contact Us</a
-                    >
+                  <div class="d-flex">
+                    <img src="images/App_Store.svg" class="img-fluid ml-20" style="max-height: 40px; margin-right: 10px;"
+                      >
+                    <img src="images/Play_Store.svg" class="img-fluid" style="max-height: 40px;"
+                      >
+                    
+                   
                   </div>
                 </div>
               </div>

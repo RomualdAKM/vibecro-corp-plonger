@@ -26,10 +26,20 @@
         <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}" />
     
         <link rel="stylesheet" href="{{ asset('assets/css/theme-dark.css') }}" />
-    
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+            async defer>
+        </script>
+
+
+
         <title>Plongeur Sous marin</title>
     
-        <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}" />
+        <link rel="icon" type="image/png" href="{{ asset('images/plongeur_logo.jpeg') }}" />
         <!-- Styles -->
          <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
@@ -42,6 +52,10 @@
 
         </div>
         <script src="{{ mix('js/app.js') }}"></script>
+
+        <script async src="../www.google.com/recaptcha/api.js"></script>
+      
+       
         {{-- @vite('resources/js/app.js') --}}
         {{-- @vite(['resources/js/app.js','resources/js/meanmenu.js']) --}}
 

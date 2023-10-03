@@ -52,13 +52,29 @@ watch(() => {
    <testimonials />
    <contact />
    <footer class="footer-area">
-      <div class="footer-top pt-60 pb-40">
+    <div class="w-full pt-16 pb-6 text-md text-center fade-in flex flex-col md:flex-row justify-between">
+            <div class="my-2">
+                <a class="text-white no-underline hover:no-underline" href="#">Mentions Légales</a> <span
+                    class="text-white"> | </span>
+                <a class="text-white no-underline hover:no-underline" href="#">Conditions Générales
+                    d'utilisation</a> <span class="text-white"> | </span>
+                <a class="text-white no-underline hover:no-underline" href="#">Conditions Générales de vente</a>
+            </div>
+
+            <div class="my-2">
+                <a class="text-white no-underline hover:no-underline" href="#">&copy; Plongeur Sous Marine
+                    2023</a>
+                                    <a class="text-white no-underline hover:no-underline" href="login-admin.html">&copy;
+                        Administration</a>
+                            </div>
+        </div>
+      <!-- <div class="footer-top pt-60 pb-40">
         <div class="container">
          
            Tout droit reserver
          
         </div>
-      </div>
+      </div> -->
       
    </footer>
    <!-- Bannière d'acceptation des cookies (modal en bas) -->

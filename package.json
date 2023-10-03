@@ -24,6 +24,8 @@
         "debounce": "^1.2.1",
         "sweetalert2": "^11.7.27",
         "vue": "^3.2.36",
+        "vue-recaptcha": "^3.0.0-alpha.6",
+        "vue-recaptcha-v3": "^2.0.1",
         "vue-router": "^4.0.13"
     }
 }
