@@ -29,21 +29,21 @@
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
+        
         <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
             async defer>
         </script>
-
-
-
-        <title>Plongeur Sous marin</title>
     
-        <link rel="icon" type="image/png" href="{{ asset('images/plongeur_logo.jpeg') }}" />
-        <!-- Styles -->
-         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
-        {{-- @vite('resources/css/app.css') --}}
+    
+    
+    <title>Plongeur Sous marin</title>
+    
+    <link rel="icon" type="image/png" href="{{ asset('images/plongeur_logo.jpeg') }}" />
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    
+    {{-- @vite('resources/css/app.css') --}}
+    <script src="https://www.google.com/recaptcha/api.js"></script>
        
     </head>
     <body >
@@ -53,7 +53,6 @@
         </div>
         <script src="{{ mix('js/app.js') }}"></script>
 
-        <script async src="../www.google.com/recaptcha/api.js"></script>
       
        
         {{-- @vite('resources/js/app.js') --}}

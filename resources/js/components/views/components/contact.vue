@@ -6,21 +6,13 @@
 <template>
    
     <div id="contact">
-      <div class="inner-banner bg-shape2 bg-color2">
+      <div class="parallax-section">
       <div class="d-table">
         <div class="d-table-cell">
           <div class="conatiner">
-            <div class="inner-title text-center">
-              <h3>Contact</h3>
-              <!-- <ul>
-                <li>
-                  <a href="index.html">Home</a>
-                </li>
-                <li>
-                  <i class="fas fa-chevron-right"></i>
-                </li>
-                <li>Contact Us</li>
-              </ul> -->
+            <div class="apply-text">
+              <h3 style="color: red;">Contact</h3>
+              
             </div>
           </div>
         </div>
@@ -111,7 +103,7 @@
                         <div class="help-block with-errors"></div>
                       </div>
                     </div>
-                    <div class="g-recaptcha mb-4" data-sitekey="6LeoLnIoAAAAABfaS-ttiSjECHnDIHYVW0ZuDUAd"></div>
+                    <div class="g-recaptcha mb-4" data-sitekey="6Lf3IXIoAAAAAKOgCOQngU0j5zzF28PqvE7s_BNQ"></div>
                     
                     <div class="col-lg-12 col-md-12">
                       <button type="submit" class="default-btn1 btn-two">
@@ -131,3 +123,20 @@
     </div>
 
 </template>
+
+<style scoped>
+.parallax-section {
+  background-image: url('./imgs/drive.png'); /* Assurez-vous que le chemin vers votre image de fond est correct */
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  color: #ffffff; /* Couleur du texte sur l'image de fond */
+  /* Ajoutez d'autres styles selon vos besoins */
+}
+
+.apply-text {
+  padding: 100px 0; /* Ajustez la valeur de remplissage selon vos besoins */
+}
+
+/* Ajoutez d'autres styles pour le texte et les éléments de la section ici */
+</style>
