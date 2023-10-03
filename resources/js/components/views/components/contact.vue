@@ -11,7 +11,7 @@
         <div class="d-table-cell">
           <div class="conatiner">
             <div class="apply-text">
-              <h3 style="color: red;">Contact</h3>
+              <h3 style="color: rgb(253, 253, 253);">Contact</h3>
               
             </div>
           </div>
@@ -126,7 +126,7 @@
 
 <style scoped>
 .parallax-section {
-  background-image: url('./imgs/drive.png'); /* Assurez-vous que le chemin vers votre image de fond est correct */
+  background-image: url('./imgs/apply-bg-2.png'); /* Assurez-vous que le chemin vers votre image de fond est correct */
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
