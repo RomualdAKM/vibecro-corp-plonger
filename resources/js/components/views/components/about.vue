@@ -4,7 +4,7 @@
       <div class="row align-items-center">
         <div class="col-lg-5">
           <div class="about-img2">
-            <img src="assets/img/about/2.png" alt="About Images" />
+            <img src="assets/img/about/2.png" alt="About Image" />
             <div class="icon-shape-5">
               <i class="flaticon-waves"></i>
             </div>
