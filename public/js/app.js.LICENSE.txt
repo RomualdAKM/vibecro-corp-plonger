@@ -1,8 +1,5 @@
 /*!
- * The buffer module from node.js, for the browser.
- *
- * @author   Feross Aboukhadijeh <http://feross.org>
- * @license  MIT
- */
-
-/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
+  * vue-i18n v9.5.0
+  * (c) 2023 kazuya kawaguchi
+  * Released under the MIT License.
+  */

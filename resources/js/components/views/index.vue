@@ -9,6 +9,7 @@ import apply from './components/apply.vue'
 import testimonials from './components/testimonials.vue'
 import footer from './components/footer.vue'
 import contact from './components/contact.vue'
+import translate from './components/translate.vue'
 
 // État du consentement aux cookies (initialisé à false)
 const cookieConsent = ref(false);
@@ -43,6 +44,7 @@ watch(() => {
 
 <template>
  
+   <translate />
    <navbar />
    <sidebar />
    <bannerarea />

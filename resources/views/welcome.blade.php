@@ -54,18 +54,57 @@
         <script src="{{ mix('js/app.js') }}"></script>
 
       
-       
+       <script>
+        // Attendre que le document soit chargé
+        document.addEventListener("DOMContentLoaded", function () {
+        // Sélectionner l'élément à animer
+        const bannerContent = document.querySelector(".banner-content");
+
+        // Ajouter la classe "show" pour déclencher l'animation
+        bannerContent.classList.add("show");
+        });
+
+       // Fonction pour vérifier si l'élément est visible dans la fenêtre
+        function isElementInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+        }
+
+        // Fonction pour gérer l'animation lorsque l'élément est visible
+        function handleAnimation() {
+        const aboutContent = document.querySelector(".about-content");
+        
+        if (isElementInViewport(aboutContent)) {
+            aboutContent.classList.add("show");
+            window.removeEventListener("scroll", handleAnimation);
+        }
+        }
+
+        // Écouteur d'événement pour déclencher l'animation lorsque l'utilisateur fait défiler la page
+        window.addEventListener("scroll", handleAnimation);
+
+
+        
+
+       </script>
+          
+
         {{-- @vite('resources/js/app.js') --}}
         {{-- @vite(['resources/js/app.js','resources/js/meanmenu.js']) --}}
 
 
-        {{-- <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 
         <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     
         <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
     
-        <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
+        {{-- <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script> --}}
     
         <script src="{{ asset('assets/js/meanmenu.js') }}"></script>
     
@@ -79,7 +118,7 @@
     
         <script src="{{ asset('assets/js/contact-form-script.js') }}"></script>
     
-        <script src="{{ asset('assets/js/custom.js') }}"></script> --}}
+        <script src="{{ asset('assets/js/custom.js') }}"></script>
         
         
        

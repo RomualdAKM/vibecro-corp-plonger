@@ -1,17 +1,18 @@
 <template>
  <div>
-    <nav class="navbar" :class="{ 'fixed-nav': isMenuOpen || isScrolled }" style="background-color: #144669; color: aliceblue;">
+    <nav class="navbar" :class="{ 'fixed-nav': isMenuOpen || isScrolled }" 
+    style="background-color: #144669; color: aliceblue;">
       <!-- Placer le logo ici -->
       <div class="logo">
         <img src="./imgs/plongeur_logo.jpeg" alt="">
-        Plonge Sous Marine
+        LA PLONGEE SOUS MARINE
       </div>
       <button class="menu-toggle" @click="toggleMenu">Menu</button>
       <ul class="navbar-menu" :class="{ 'show-menu': isMenuOpen }">
-        <li><a href="#acc" style="color: aliceblue;"><i class="fas fa-home"></i> Accueil</a></li>
-        <li><a href="#propos" style="color: aliceblue;"><i class="fas fa-info"></i> À Propos</a></li>
-        <li><a href="#temoignage" style="color: aliceblue;"><i class="fas fa-comments"></i> Témoignage</a></li>
-        <li><a href="#contact" style="color: aliceblue;"><i class="fas fa-envelope"></i> Contact</a></li>
+        <li><a href="#acc" style="color: aliceblue;"><i class="fas fa-home"></i> {{ $t('messages.menu1') }}</a></li>
+        <li><a href="#propos" style="color: aliceblue;"><i class="fa-solid fa-circle-exclamation"></i> {{ $t('messages.menu2') }}</a></li>
+        <li><a href="#temoignage" style="color: aliceblue;"><i class="fas fa-comments"></i> {{ $t('messages.menu3') }}</a></li>
+        <li><a href="#contact" style="color: aliceblue;"><i class="fas fa-envelope"></i> {{ $t('messages.menu4') }}</a></li>
       </ul>
     </nav>
     <!-- Your page content here -->
