@@ -1,4 +1,8 @@
 <script setup>
+import { useLocation } from '../store/pinia';
+
+const getLang = useLocation()
+
 
 </script>
 
@@ -29,7 +33,8 @@
           <div class="col-lg-6">
             <div class="form-area">
               <div class="form-section">
-                <h2>Que souhaitez-vous savoir ?</h2>
+                <h2 v-if="getLang.useLang == 'fr'">Que souhaitez-vous savoir ?</h2>
+                <h2 v-else>What would you like to know ?</h2>
                 <form id="contactForm">
                   <div class="row">
                     <div class="col-lg-6 col-sm-6">
@@ -106,8 +111,11 @@
                     <div class="g-recaptcha mb-4" data-sitekey="6Lf3IXIoAAAAAKOgCOQngU0j5zzF28PqvE7s_BNQ"></div>
                     
                     <div class="col-lg-12 col-md-12">
-                      <button type="submit" class="default-btn1 btn-two">
+                      <button type="submit" class="default-btn1 btn-two" v-if="getLang.useLang == 'fr'">
                         Envoyer
+                      </button>
+                      <button type="submit" class="default-btn1 btn-two" v-else>
+                        Send
                       </button>
                       <div id="msgSubmit" class="h3 text-center hidden"></div>
                       <div class="clearfix"></div>

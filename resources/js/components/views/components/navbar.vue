@@ -8,11 +8,17 @@
         LA PLONGEE SOUS MARINE
       </div>
       <button class="menu-toggle" @click="toggleMenu">Menu</button>
-      <ul class="navbar-menu" :class="{ 'show-menu': isMenuOpen }">
-        <li><a href="#acc" style="color: aliceblue;"><i class="fas fa-home"></i> {{ $t('messages.menu1') }}</a></li>
-        <li><a href="#propos" style="color: aliceblue;"><i class="fa-solid fa-circle-exclamation"></i> {{ $t('messages.menu2') }}</a></li>
-        <li><a href="#temoignage" style="color: aliceblue;"><i class="fas fa-comments"></i> {{ $t('messages.menu3') }}</a></li>
-        <li><a href="#contact" style="color: aliceblue;"><i class="fas fa-envelope"></i> {{ $t('messages.menu4') }}</a></li>
+      <ul class="navbar-menu" :class="{ 'show-menu': isMenuOpen }" v-if="getLang.useLang == 'fr'">
+        <li><a href="#acc" style="color: aliceblue;"><i class="fas fa-home"></i> Accueil</a></li>
+        <li><a href="#propos" style="color: aliceblue;"><i class="fa-solid fa-circle-exclamation"></i> A Propos</a></li>
+        <li><a href="#temoignage" style="color: aliceblue;"><i class="fas fa-comments"></i> Service</a></li>
+        <li><a href="#contact" style="color: aliceblue;"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+      <ul class="navbar-menu" :class="{ 'show-menu': isMenuOpen }" v-else>
+        <li><a href="#acc" style="color: aliceblue;"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#propos" style="color: aliceblue;"><i class="fa-solid fa-circle-exclamation"></i> About</a></li>
+        <li><a href="#temoignage" style="color: aliceblue;"><i class="fas fa-comments"></i> Our Service</a></li>
+        <li><a href="#contact" style="color: aliceblue;"><i class="fas fa-envelope"></i> Contact</a></li>
       </ul>
     </nav>
     <!-- Your page content here -->
@@ -21,6 +27,10 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import { useLocation } from '../store/pinia';
+
+const getLang = useLocation()
+
 
 const isMenuOpen = ref(false);
 const isScrolled = ref(false);

@@ -1,17 +1,34 @@
 import { createApp } from 'vue';
 import app from './components/app.vue';
 import router from './router/index';
-import { createI18n } from 'vue-i18n';
+import { createPinia } from 'pinia'
 
-const i18n = createI18n({
-  locale: 'fr',
-  messages: {
-    en: require('./locales/en.json'),
-    fr: require('./locales/fr.json'),
-  },
-});
+// import { createI18n } from 'vue-i18n';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/dist/sweetalert2.css'
 
-const vueApp = createApp(app);
-vueApp.use(router).use(i18n).mount('#app');
+window.Swal = Swal
+const toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timeProgressBar: true,
+})
 
-export { i18n }; // Exportez l'instance i18n
+window.toast = toast
+
+
+// const i18n = createI18n({
+//   locale: 'fr',
+//   messages: {
+//     en: require('./locales/en.json'),
+//     fr: require('./locales/fr.json'),
+//   },
+// });
+
+const pinia = createPinia()
+createApp(app).use(pinia).use(router).mount('#app')
+
+//export { i18n };
+

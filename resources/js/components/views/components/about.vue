@@ -1,3 +1,27 @@
+<script setup>
+import { ref,onMounted } from "vue"
+import axios from 'axios';
+import { useLocation } from '../store/pinia';
+
+const getLang = useLocation()
+
+const contenu = ref({
+    titre:"",
+    description:"",
+})
+
+const getContenu = async () => {
+    let response = await axios.get("/api/get_contenu2");
+    contenu.value = response.data.contenu
+    console.log(contenu.value);
+};
+
+onMounted( async () => {
+    getContenu();
+})
+</script>
+
+
 <template>
   <div class="about-another pt-100 pb-70" id="propos">
     <div class="container-fluid m-0 p-0">
@@ -13,16 +37,22 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-7">
-          <div class="about-content">
-            <span>{{ $t('messages.propos1') }}</span>
-            <h2>{{ $t('messages.propos2') }}</h2>
+        <div class="col-lg-7" v-if="contenu.length > 0">
+          <div class="about-content" v-if="getLang.useLang == 'fr'">
+            <span>A Propos</span>
+            <h2>{{ contenu[0].titre }}</h2>
             <p>
-              {{ $t('messages.propos3') }}
+              {{ contenu[0].description }}
             </p>
+            
+          </div>
+          <div class="about-content" v-else>
+            <span>About</span>
+            <h2>{{ contenu[1].titre }}</h2>
             <p>
-              {{ $t('messages.propos3') }}
+              {{ contenu[1].description }}
             </p>
+            
           </div>
         </div>
       </div>
@@ -30,18 +60,3 @@
   </div>
 </template>
 
-<style scoped>
-/* Ajoutez une classe pour l'animation */
-.about-content {
-  opacity: 0; /* L'élément est invisible au départ */
-  transform: translateY(20px); /* Déplacez l'élément vers le bas */
-  transition: opacity 2.5s ease, transform 2.5s ease; /* Augmenter la durée de l'animation */
-}
-
-.about-content.show {
-  opacity: 1; /* Rendre l'élément visible */
-  transform: translateY(0); /* Animer le déplacement vers le haut */
-}
-
-
-</style>

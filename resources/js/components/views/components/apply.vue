@@ -1,16 +1,21 @@
 <template>
   <div>
-    <div class="parallax-section">
-      <div class="container">
-        <div class="apply-text">
+    <div class="parallax-section"  v-if="contenu.length > 0">
+      <div class="container" v-if="getLang.useLang == 'fr'">
+        <div class="apply-text" >
           <span>Lorem ipsum</span>
-          <h2> Lorem ipsum dolor sit amet</h2>
+          <h2> {{ contenu[0].titre }}</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-            lobortis eros id urna sollicitudin feugiat. In imperdiet at dui
-            nec vehicula. Aenean nec sapien odio. Nunc laoreet auctor Testimony
-            you mister music.Discipline assets
-            briefs with tone completely
+            {{ contenu[0].description }}
+          </p>
+        </div>
+      </div>
+      <div class="container" v-else>
+        <div class="apply-text" >
+          <span>Lorem ipsum</span>
+          <h2> {{ contenu[1].titre }}</h2>
+          <p>
+            {{ contenu[1].description }}
           </p>
         </div>
       </div>
@@ -33,23 +38,31 @@
   padding: 100px 0; /* Ajustez la valeur de remplissage selon vos besoins */
 }
 
-/* Ajoutez d'autres styles pour le texte et les éléments de la section ici */
 
-/* Ajoutez une classe pour l'animation */
-.apply-text {
-  opacity: 0; /* L'élément est invisible au départ */
-  transform: translateY(20px); /* Déplacez l'élément vers le bas */
-  transition: opacity 1.5s ease, transform 1.5s ease; /* Augmenter la durée de l'animation */
-}
-
-.apply-text.show {
-  opacity: 1; /* Rendre l'élément visible */
-  transform: translateY(0); /* Animer le déplacement vers le haut */
-}
 
 </style>
 
-<script >
+<script setup>
+import { ref,onMounted } from "vue"
+import { useLocation } from '../store/pinia';
+import axios from 'axios';
+
+const getLang = useLocation()
+
+const contenu = ref({
+    titre:"",
+    description:"",
+})
+
+const getContenu = async () => {
+    let response = await axios.get("/api/get_contenu4");
+    contenu.value = response.data.contenu
+    console.log(contenu.value);
+};
+
+onMounted( async () => {
+    getContenu();
+})
 // Fonction pour vérifier si l'élément est visible dans la fenêtre
 function isElementInViewport(element) {
   const rect = element.getBoundingClientRect();

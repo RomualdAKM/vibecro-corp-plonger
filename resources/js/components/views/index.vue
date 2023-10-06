@@ -66,8 +66,8 @@ watch(() => {
             <div class="my-2">
                 <a class="text-white no-underline hover:no-underline" href="#">&copy; Plongeur Sous Marine
                     2023</a>
-                                    <a class="text-white no-underline hover:no-underline" href="login-admin.html">&copy;
-                        Administration</a>
+                                    <router-link to="/admin/section1" class="text-white no-underline hover:no-underline" href="login-admin.html">&copy;
+                        Administration</router-link>
                             </div>
         </div>
       <!-- <div class="footer-top pt-60 pb-40">
