@@ -36,7 +36,7 @@
     
     
     
-    <title>Plongeur Sous marin</title>
+    <title>PLONGEE SOUS MARINE</title>
     
     <link rel="icon" type="image/png" href="{{ asset('images/plongeur_logo.jpeg') }}" />
     <!-- Styles -->
