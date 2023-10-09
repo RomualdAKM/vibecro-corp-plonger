@@ -17182,7 +17182,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return axios__WEBPACK_IMPORTED_MODULE_2__["default"].post("/api/register/", form).then(function (response) {
                 if (response.data.success) {
                   localStorage.setItem("token", response.data.data.token);
-                  _router_index_js__WEBPACK_IMPORTED_MODULE_1__["default"].push("/login");
+                  _router_index_js__WEBPACK_IMPORTED_MODULE_1__["default"].push("/admin/login");
                   toast.fire({
                     icon: "success",
                     title: "Compte créé avec succé"
