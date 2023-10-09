@@ -16,7 +16,7 @@ const register = async () => {
     await axios.post("/api/register/", form).then((response) => {
         if (response.data.success) {
             localStorage.setItem("token", response.data.data.token);
-             router.push("/admin/login");
+             router.push("/admin/section1");
             toast.fire({
             icon: "success",
             title: "Compte créé avec succé",
