@@ -1,7 +1,6 @@
 <script setup>
 import Base from "./base.vue";
 import { ref, onMounted } from "vue";
-import axios from "axios";
 
 const contenu = ref({
     titre: "",
