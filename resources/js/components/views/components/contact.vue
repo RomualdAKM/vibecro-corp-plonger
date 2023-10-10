@@ -108,7 +108,7 @@ const getLang = useLocation()
                         <div class="help-block with-errors"></div>
                       </div>
                     </div>
-                    <div class="g-recaptcha mb-4" data-sitekey="6Lf3IXIoAAAAAKOgCOQngU0j5zzF28PqvE7s_BNQ"></div>
+                    <div class="g-recaptcha mb-4" data-sitekey="6Lf0540oAAAAANVTK3F-bl_7qfZULb9WHJm3frAn"></div>
                     
                     <div class="col-lg-12 col-md-12">
                       <button type="submit" class="default-btn1 btn-two" v-if="getLang.useLang == 'fr'">
