@@ -32,7 +32,7 @@ onMounted( async () => {
           <p :class="['animate-text', 'animate-slide']" style="color: aliceblue;">{{ contenu[0].description }}</p>
           <div class="store-images">
             <span>
-              <img src="images/App_Store.svg" id="img1" class="img-fluid fade-in-left" style="max-height: 60px; padding-right: 5rem;">
+              <img src="images/App_Store.svg" id="img1" class="img-fluid fade-in-left" style="max-height: 60px; padding-right: 10px;">
             </span>
             <span>
               <img src="images/Play_Store.svg" id="img2" class="img-fluid fade-in-right" style="max-height: 60px;">
@@ -44,7 +44,7 @@ onMounted( async () => {
           <p :class="['animate-text', 'animate-slide']" style="color: aliceblue;">{{ contenu[1].description }}</p>
           <div class="store-images">
             <span>
-              <img src="images/App_Store.svg" class="img-fluid fade-in-left" style="max-height: 60px; padding-right: 5rem;">
+              <img src="images/App_Store.svg" class="img-fluid fade-in-left" style="max-height: 60px; padding-right: 10px;">
             </span>
             <span>
               <img src="images/Play_Store.svg" class="img-fluid fade-in-right" style="max-height: 60px;">
@@ -147,11 +147,7 @@ onMounted( async () => {
   z-index: 200; /* Assurez-vous que le texte fixe est au-dessus du carrousel */
 }
 @media screen and (max-width: 968px) {
-  /* Adjust styles for smaller screens */
-  .slider-area .owl-carousel .owl-theme {
-    height: 70rem;
-
-  }
+ 
   .slider-fixed-text {
     top: 5%; /* Example: Change top position for smaller screens */
     margin-bottom: 10%;
@@ -167,13 +163,7 @@ onMounted( async () => {
   width: 100%;
   z-index: 200; /* Assurez-vous que le texte fixe est au-dessus du carrousel */
 }
-#img1{
-  max-height: 20px;
-}
-#img2{
-  max-height: 20px;
-}
-  
+
  
 }
 </style>
