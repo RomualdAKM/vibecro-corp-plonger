@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CentreController;
+use App\Http\Controllers\PlongeController;
+use App\Http\Controllers\MoniteurController;
 use App\Http\Controllers\DeuxiemesectionController;
 use App\Http\Controllers\PremieresectionController;
 use App\Http\Controllers\QuatriemesectionController;
@@ -56,3 +59,24 @@ Route::controller(QuatriemesectionController::class)
         Route::post('update_ven4/{id}','update_ven4');  
     });
     
+
+
+Route::controller(MoniteurController::class)
+        ->group(function(){
+        Route::get('get_moniteurs','get_moniteurs');
+        Route::post('create_moniteur','create_moniteur');
+    });
+
+
+Route::controller(PlongeController::class)
+        ->group(function(){
+        Route::post('create_plonge','create_plonge');
+       Route::get('get_plonges','get_plonges');
+    });
+
+    
+Route::controller(CentreController::class)
+        ->group(function(){
+        Route::post('create_centre','create_centre');
+        Route::get('get_centres','get_centres');
+    });

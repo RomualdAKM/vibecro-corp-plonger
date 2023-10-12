@@ -28,6 +28,22 @@
                             Section 4
                         </router-link>
                     </li>
+                    <li class="nav-item">
+                        <router-link to="/admin/moniteurs" class="nav-link" >
+                            Moniteurs
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/admin/plonge" class="nav-link" >
+                            Plonge
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/admin/centres" class="nav-link" >
+                            Centre
+                        </router-link>
+                    </li>
+                  
                     <!-- Ajoutez d'autres liens de navigation ici -->
                 </ul>
             </div>
