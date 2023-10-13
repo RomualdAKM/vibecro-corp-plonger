@@ -5,6 +5,7 @@ import router from "./../../../../router/index.js"
 import {reactive,ref,onMounted} from 'vue'
 
 const moniteurs = ref([])
+const centres = ref([])
 const form = reactive({
     lieu:"",
     duree:"",
@@ -17,6 +18,7 @@ const form = reactive({
     temps:"",
     pallier:"",
     moniteur_id:"",
+    centre_id:"",
    
 })
 
@@ -26,9 +28,16 @@ const getMoniteurs = async () => {
         console.log('moniteur',response.data.moniteurs)
     })
 }
+const getCentres = async () => {
+    await axios.get('/api/get_centres').then((response) => {
+        centres.value = response.data.centres
+        console.log('centre',response.data.centres)
+    })
+}
 
 onMounted(() => {
     getMoniteurs()
+    getCentres()
 })
 
 const changePhoto = (e) => {
@@ -97,10 +106,10 @@ const savePlonge = async () => {
                                <label for="francaisInput" class="form-label">Image</label>
                                <input type="file" class="form-control" @change="changePhoto">
                            </div>
-                           <div class="mb-3 form-group">
+                           <!-- <div class="mb-3 form-group">
                                <label for="francaisInput" class="form-label">Lieu</label>
                                <input type="text" class="form-control" v-model="form.lieu">
-                           </div>
+                           </div> -->
                            <div class="mb-3 form-group">
                                <label for="francaisInput" class="form-label">Durée</label>
                                <input type="number" class="form-control" v-model="form.duree">
@@ -129,6 +138,13 @@ const savePlonge = async () => {
                                <label for="francaisInput" class="form-label">Moniteur</label>
                                <select class="form-control"  v-model="form.moniteur_id" >
                                     <option v-for="moniteur in moniteurs" :key="moniteur.id" :value="moniteur.id ">{{moniteur.nom}}</option>
+                                    
+                               </select>
+                           </div>
+                           <div class="mb-3 form-group">
+                               <label for="francaisInput" class="form-label">Centre</label>
+                               <select class="form-control"  v-model="form.centre_id" >
+                                    <option v-for="centre in centres" :key="centre.id" :value="centre.id ">{{centre.nom}}</option>
                                     
                                </select>
                            </div>

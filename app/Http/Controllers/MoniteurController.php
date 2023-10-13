@@ -53,7 +53,7 @@ class MoniteurController extends Controller
             $sub = substr($request->image, 0, $strpos);
             $ex = explode('/', $sub)[1];
             $name = time() . "." . $ex;
-        //    $img = Image::make($request->image)->resize(200, 200);
+            //$img = Image::make($request->image)->resize(200, 200);
             $upload_path = public_path() . "/images/moniteurs/";
             $image = $upload_path . $moniteur->image;
             // $img->save($upload_path . $name);

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Centre;
 use App\Models\Moniteur;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,6 +16,9 @@ class Plonge extends Model
 
     public function moniteur():BelongsTo{
         return $this->belongsTo(Moniteur::class);
+    }
+    public function centre():BelongsTo{
+        return $this->belongsTo(Centre::class);
     }
 
     public function users():BelongsToMany

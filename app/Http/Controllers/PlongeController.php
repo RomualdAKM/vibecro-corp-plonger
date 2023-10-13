@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Centre;
 use App\Models\Plonge;
-use Illuminate\Http\Request;
 // use Image;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class PlongeController extends Controller
@@ -20,7 +21,7 @@ class PlongeController extends Controller
     
     public function create_plonge(Request $request){
         $validator = Validator::make($request->all(), [
-            'lieu' => 'required',
+            // 'lieu' => 'required',
             'duree' => 'required',
             'prix' => 'required',
             'nb_places' => 'required',
@@ -31,6 +32,7 @@ class PlongeController extends Controller
             'temps' => 'required',
             'pallier' => 'required',
             'moniteur_id' => 'required',
+            'centre_id' => 'required',
           
         ]);
 
@@ -44,9 +46,12 @@ class PlongeController extends Controller
                 200
             );
         }    
+        $centre = Centre::where('id', $request->centre_id)->first();
+
+        $lieu_centre = $centre->lieu;
 
         $plonge = new Plonge();
-        $plonge->lieu = $request->lieu;
+        $plonge->lieu =  $lieu_centre;
         $plonge->duree = $request->duree;
         $plonge->prix = $request->prix;
         $plonge->nb_places = $request->nb_places;
@@ -56,6 +61,7 @@ class PlongeController extends Controller
         $plonge->temps = $request->temps;
         $plonge->pallier = $request->pallier;
         $plonge->moniteur_id = $request->moniteur_id;
+        $plonge->centre_id = $request->centre_id;
 
         $name = '';
 

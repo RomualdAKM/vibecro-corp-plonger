@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('temps');
             $table->integer('pallier');
             $table->foreignId('moniteur_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('centre_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
