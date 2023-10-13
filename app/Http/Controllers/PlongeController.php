@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Plonge;
 use Illuminate\Http\Request;
-use Image;
+// use Image;
 use Illuminate\Support\Facades\Validator;
 
 class PlongeController extends Controller
@@ -64,10 +64,10 @@ class PlongeController extends Controller
             $sub = substr($request->image, 0, $strpos);
             $ex = explode('/', $sub)[1];
             $name = time() . "." . $ex;
-           $img = Image::make($request->image)->resize(200, 200);
+        //    $img = Image::make($request->image)->resize(200, 200);
             $upload_path = public_path() . "/images/plonges/";
             $image = $upload_path . $plonge->image;
-            $img->save($upload_path . $name);
+            // $img->save($upload_path . $name);
             if (file_exists($image)) {
                 @unlink($image);
             } else {
