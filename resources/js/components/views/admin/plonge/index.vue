@@ -6,11 +6,10 @@ const  plonges = ref([])
 
 const getPlonges = async () => {
     await axios.get('/api/get_plonges').then((response) => {
-        plonges.value = response.data.plonges
-        console.log('moniteur',response.data.plonges)
+        plonges.value = response.data
+        console.log('moniteur',response.data)
     })
 }
-
 
 onMounted(() => {
     getPlonges()
@@ -30,7 +29,7 @@ onMounted(() => {
                 <div >
                     
     <div class="table-container">
-        <button class="add-button">Ajouter</button>
+        <router-link to="/admin/add_plonge" class="add-button">Ajouter</router-link>
         <table>
             <thead>
                 <tr>
@@ -43,7 +42,7 @@ onMounted(() => {
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="plonge in plonges" :key="plonge.id">
+                <tr v-for="plonge in plonges.data" :key="plonge.id">
                     <td>
                         <img :src="'/images/plonges/' + plonge.image" alt="Image" style="width: 20px; height: 20px;"/>
                     </td>

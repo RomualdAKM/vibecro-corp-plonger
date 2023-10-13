@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CentreController;
 use App\Http\Controllers\PlongeController;
+use App\Http\Controllers\MaterielController;
 use App\Http\Controllers\MoniteurController;
 use App\Http\Controllers\DeuxiemesectionController;
 use App\Http\Controllers\PremieresectionController;
@@ -79,4 +80,9 @@ Route::controller(CentreController::class)
         ->group(function(){
         Route::post('create_centre','create_centre');
         Route::get('get_centres','get_centres');
+    });
+Route::controller(MaterielController::class)
+        ->group(function(){
+        Route::post('create_materiel','create_materiel');
+        Route::get('get_materiels','get_materiels');
     });

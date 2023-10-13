@@ -2,17 +2,17 @@
 import Base from "./../base.vue"
 import {ref, onMounted} from 'vue'
 
-const  centres = ref([])
+const  materiels = ref([])
 
-const getCentres = async () => {
-    await axios.get('/api/get_centres').then((response) => {
-        centres.value = response.data
-        console.log('centres',response.data)
+const getMateriels = async () => {
+    await axios.get('/api/get_materiels').then((response) => {
+        materiels.value = response.data
+        console.log('materiels',response.data)
     })
 }
 
 onMounted(() => {
-    getCentres()
+    getMateriels()
 })
 
 </script>
@@ -28,29 +28,32 @@ onMounted(() => {
                 <div >
                     
     <div class="table-container">
-        <router-link to="/admin/add_centre" class="add-button">Ajouter</router-link>
+        <router-link to="/admin/add_materiel" class="add-button">Ajouter</router-link>
         <table>
             <thead>
                 <tr>
-                    
+                    <th>Image</th>
                     <th>Nom</th>
-                    <th>statu</th>
-                  
+                    <th>Description</th>
+                    <th>Prix</th>
                     <th>Actions </th>
                     
                 </tr>
             </thead>
             <tbody>
-               
-                <tr v-for="centre in centres.data" :key="centre.id">
-                    
+                <tr v-for="materiel in materiels.data" :key="materiel.id">
                     <td>
-                        <h3>{{ centre.nom }}</h3>
+                        <img :src="'/images/materiels/' + materiel.image" alt="Image" style="width: 20px; height: 20px;"/>
                     </td>
                     <td>
-                        <h3>{{ centre.statut }}</h3>
+                        <h3>{{ materiel.nom }}</h3>
                     </td>
-                   
+                    <td>
+                        <h3>{{ materiel.description }}</h3>
+                    </td>
+                    <td>
+                        <h3>{{ materiel.prix }}</h3>
+                    </td>
                     <td>
                         <a href="#" class="edit-button">Modifier</a>
                         <a href="#" class="delete-button">Supprimer</a>

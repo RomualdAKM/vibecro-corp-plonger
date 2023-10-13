@@ -6,6 +6,7 @@ use App\Models\Centre;
 use App\Models\Plonge;
 // use Image;
 use Illuminate\Http\Request;
+use App\Http\Resources\GetPlongeResource;
 use Illuminate\Support\Facades\Validator;
 
 class PlongeController extends Controller
@@ -14,9 +15,11 @@ class PlongeController extends Controller
     public function get_plonges(){
         $plonges = Plonge::orderBy('id','desc')->get();
 
-        return response()->json([
-            'plonges' => $plonges
-        ],200);
+        // return response()->json([
+        //     'plonges' => $plonges
+        // ],200);
+
+        return GetPlongeResource::collection($plonges);
     }
     
     public function create_plonge(Request $request){

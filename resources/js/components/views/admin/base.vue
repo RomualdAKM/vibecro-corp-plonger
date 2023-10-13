@@ -43,6 +43,11 @@
                             Centre
                         </router-link>
                     </li>
+                    <li class="nav-item">
+                        <router-link to="/admin/materiels" class="nav-link" >
+                            Materiel
+                        </router-link>
+                    </li>
                   
                     <!-- Ajoutez d'autres liens de navigation ici -->
                 </ul>

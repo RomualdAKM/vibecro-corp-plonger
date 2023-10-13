@@ -6,17 +6,20 @@ use App\Models\Moniteur;
 use Illuminate\Http\Request;
 // use Image;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\GetMoniteurResource;
 
 class MoniteurController extends Controller
 {
 
     public function get_moniteurs(){
 
-        $moniteurs = Moniteur::orderBy('id','desc')->get();
+        $moniteurs = Moniteur::all();
 
-        return response()->json([
-            'moniteurs' => $moniteurs
-        ],200);
+        // return response()->json([
+        //     'moniteurs' => $moniteurs
+        // ],200);
+
+        return $moniteurs;
     }
 
 

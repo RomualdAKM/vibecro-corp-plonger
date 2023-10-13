@@ -11,12 +11,12 @@ class CentreController extends Controller
 {
 
     public function get_centres(){
-        $centres = Centre::orderBy('id','desc')->get();
+        $centres = Centre::all();
        //dd($centres);
         // return response()->json([
         //     'centres' => $centres
         // ],200);
-        return GetCentreResource::collection($centres);
+        return $centres;
     }
     public function create_centre(Request $request){
         $validator = Validator::make($request->all(), [

@@ -6,10 +6,16 @@ import section3 from '../components/views/admin/section3.vue'
 import section4 from '../components/views/admin/section4.vue'
 import plonges from '../components/views/admin/plonge/index.vue'
 import addPlonge from '../components/views/admin/plonge/add.vue'
+
 import moniteurs from '../components/views/admin/moniteurs/index.vue'
 import addMoniteur from '../components/views/admin/moniteurs/add.vue'
+
 import addCentre from '../components/views/admin/centres/add.vue'
 import centres from '../components/views/admin/centres/index.vue'
+
+import materiels from '../components/views/admin/materiels/index.vue'
+import addMateriel from '../components/views/admin/materiels/add.vue'
+
 import login from '../components/views/admin/login.vue'
 import register from '../components/views/admin/register.vue'
 
@@ -114,6 +120,27 @@ const routes = [
             
         }
     },
+    {
+        path: '/admin/materiels',
+        name: 'materiels',
+        component: materiels,
+        meta: {
+            requiresAuth: true,
+            
+        }
+    },
+    {
+        path: '/admin/add_materiel',
+        name: 'addMateriel',
+        component: addMateriel,
+        meta: {
+            requiresAuth: true,
+            
+        }
+    },
+
+
+
     {
         path: '/admin/login', 
         name: 'Login',
