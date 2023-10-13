@@ -4,17 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Centre;
 use Illuminate\Http\Request;
+use App\Http\Resources\GetCentreResource;
 use Illuminate\Support\Facades\Validator;
 
 class CentreController extends Controller
 {
 
     public function get_centres(){
-        $centres = Centre::orderBy('id','desc')->get('nom');
+        $centres = Centre::orderBy('id','desc')->get();
        //dd($centres);
-        return response()->json([
-            'centres' => $centres
-        ],200);
+        // return response()->json([
+        //     'centres' => $centres
+        // ],200);
+        return GetCentreResource::collection($centres);
     }
     public function create_centre(Request $request){
         $validator = Validator::make($request->all(), [
