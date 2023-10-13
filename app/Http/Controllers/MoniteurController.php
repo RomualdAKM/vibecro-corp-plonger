@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Moniteur;
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
+use Image;
 use Illuminate\Support\Facades\Validator;
 
 class MoniteurController extends Controller
