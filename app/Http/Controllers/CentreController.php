@@ -10,8 +10,8 @@ class CentreController extends Controller
 {
 
     public function get_centres(){
-        $centres = Centre::orderBy('id','desc')->get();
-
+        $centres = Centre::orderBy('id','desc')->get('nom');
+       //dd($centres);
         return response()->json([
             'centres' => $centres
         ],200);
