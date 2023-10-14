@@ -28,7 +28,7 @@ onMounted(() => {
                 <div >
                     
     <div class="table-container">
-        <router-link to="/admin/add_moniteur" class="add-button">Ajouter</router-link>
+        <router-link to="/admin/add_moniteurs" class="add-button">Ajouter</router-link>
         <table>
             <thead>
                 <tr>
@@ -41,7 +41,7 @@ onMounted(() => {
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="moniteur in moniteurs.data" :key="moniteur.id">
+                <tr v-for="moniteur in moniteurs" :key="moniteur.id">
                     <td>
                         <img :src="'/images/moniteurs/' + moniteur.image" alt="Image" style="width: 20px; height: 20px;"/>
                     </td>

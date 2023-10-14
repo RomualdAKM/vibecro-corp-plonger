@@ -18,6 +18,7 @@ class CentreController extends Controller
         // ],200);
         return $centres;
     }
+    
     public function create_centre(Request $request){
         $validator = Validator::make($request->all(), [
             'nom' => 'required',

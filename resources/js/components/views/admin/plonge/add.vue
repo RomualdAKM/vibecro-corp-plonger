@@ -30,8 +30,8 @@ const getMoniteurs = async () => {
 }
 const getCentres = async () => {
     await axios.get('/api/get_centres').then((response) => {
-        centres.value = response.data
-        console.log('centre',response.data)
+        centres.value = response
+        console.log('centre',response)
     })
 }
 
@@ -136,15 +136,16 @@ const savePlonge = async () => {
                            </div>
                            <div class="mb-3 form-group">
                                <label for="francaisInput" class="form-label">Moniteur</label>
-                               <select class="form-control"  v-model="form.moniteur_id" >
-                                    <option v-for="moniteur in moniteurs.data" :key="moniteur.id" :value="moniteur.id ">{{moniteur.nom}}</option>
+                               <select class="form-control"  v-model="form.moniteur_id">
+                                
+                                    <option v-for="moniteur in moniteurs" :key="moniteur.id" :value="moniteur.id ">{{moniteur.nom}}</option>
                                     
                                </select>
                            </div>
                            <div class="mb-3 form-group">
                                <label for="francaisInput" class="form-label">Centre</label>
                                <select class="form-control"  v-model="form.centre_id" >
-                                    <option v-for="centre in centres" :key="centre.id" :value="centre.id ">{{centre.nom}}</option>
+                                    <option v-for="centre in centres.data" :key="centre.id" :value="centre.id ">{{centre.nom}}</option>
                                     
                                </select>
                            </div>
