@@ -19,7 +19,7 @@ class PlongeController extends Controller
         //     'plonges' => $plonges
         // ],200);
 
-        return GetPlongeResource::collection($plonges);
+        return $plonges;
     }
     
     public function create_plonge(Request $request){

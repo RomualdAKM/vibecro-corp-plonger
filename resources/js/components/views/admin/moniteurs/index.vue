@@ -6,8 +6,8 @@ const  moniteurs = ref([])
 
 const getMoniteurs = async () => {
     await axios.get('/api/get_moniteurs').then((response) => {
-        moniteurs.value = response.data
-        console.log('moniteur',response.data)
+        moniteurs.value = response
+        console.log('moniteur',response)
     })
 }
 
@@ -41,7 +41,7 @@ onMounted(() => {
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="moniteur in moniteurs" :key="moniteur.id">
+                <tr v-for="moniteur in moniteurs.data" :key="moniteur.id">
                     <td>
                         <img :src="'/images/moniteurs/' + moniteur.image" alt="Image" style="width: 20px; height: 20px;"/>
                     </td>

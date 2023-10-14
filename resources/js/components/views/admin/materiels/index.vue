@@ -6,8 +6,8 @@ const  materiels = ref([])
 
 const getMateriels = async () => {
     await axios.get('/api/get_materiels').then((response) => {
-        materiels.value = response.data
-        console.log('materiels',response.data)
+        materiels.value = response
+        console.log('materiels',response)
     })
 }
 

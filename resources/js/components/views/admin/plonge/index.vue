@@ -6,8 +6,8 @@ const  plonges = ref([])
 
 const getPlonges = async () => {
     await axios.get('/api/get_plonges').then((response) => {
-        plonges.value = response.data
-        console.log('moniteur',response.data)
+        plonges.value = response
+        console.log('moniteur',response)
     })
 }
 

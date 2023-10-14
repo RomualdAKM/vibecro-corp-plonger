@@ -24,8 +24,8 @@ const form = reactive({
 
 const getMoniteurs = async () => {
     await axios.get('/api/get_moniteurs').then((response) => {
-        moniteurs.value = response.data
-        console.log('moniteur',response.data)
+        moniteurs.value = response
+        console.log('moniteur',response)
     })
 }
 const getCentres = async () => {
@@ -138,7 +138,7 @@ const savePlonge = async () => {
                                <label for="francaisInput" class="form-label">Moniteur</label>
                                <select class="form-control"  v-model="form.moniteur_id">
                                 
-                                    <option v-for="moniteur in moniteurs" :key="moniteur.id" :value="moniteur.id ">{{moniteur.nom}}</option>
+                                    <option v-for="moniteur in moniteurs.data" :key="moniteur.id" :value="moniteur.id ">{{moniteur.nom}}</option>
                                     
                                </select>
                            </div>
