@@ -144,7 +144,7 @@ const savePlonge = async () => {
                            <div class="mb-3 form-group">
                                <label for="francaisInput" class="form-label">Centre</label>
                                <select class="form-control"  v-model="form.centre_id" >
-                                    <option v-for="centre in centres.data" :key="centre.id" :value="centre.id ">{{centre.nom}}</option>
+                                    <option v-for="centre in centres" :key="centre.id" :value="centre.id ">{{centre.nom}}</option>
                                     
                                </select>
                            </div>
