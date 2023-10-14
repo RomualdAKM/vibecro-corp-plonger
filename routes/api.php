@@ -73,6 +73,7 @@ Route::controller(PlongeController::class)
         ->group(function(){
         Route::post('create_plonge','create_plonge');
        Route::get('get_plonges','get_plonges');
+       Route::get('get_plonges_centre/{name}','get_plonges_centre');
     });
 
     

@@ -17177,8 +17177,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context.next = 2;
               return axios.get('/api/get_centres').then(function (response) {
-                centres.value = response.data;
-                console.log('centres', response.data);
+                centres.value = response;
+                console.log('centres', response);
               });
             case 2:
             case "end":
@@ -20152,12 +20152,12 @@ var _hoisted_26 = /*#__PURE__*/_withScopeId(function () {
 var _hoisted_27 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
     value: "dispo"
-  }, "dispo", -1 /* HOISTED */);
+  }, "luxe", -1 /* HOISTED */);
 });
 var _hoisted_28 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
     value: "nondispo"
-  }, "nondispo", -1 /* HOISTED */);
+  }, "standard", -1 /* HOISTED */);
 });
 var _hoisted_29 = [_hoisted_27, _hoisted_28];
 var _hoisted_30 = {

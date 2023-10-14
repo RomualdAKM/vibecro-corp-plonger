@@ -6,8 +6,8 @@ const  centres = ref([])
 
 const getCentres = async () => {
     await axios.get('/api/get_centres').then((response) => {
-        centres.value = response.data
-        console.log('centres',response.data)
+        centres.value = response
+        console.log('centres',response)
     })
 }
 

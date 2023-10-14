@@ -151,8 +151,8 @@ const savePlonge = async () => {
                            <div class="mb-3 form-group">
                                <label for="francaisInput" class="form-label">Statut</label>
                                <select class="form-control" v-model="form.statut">
-                                    <option value="dispo">dispo</option>
-                                    <option value="nondispo">nondispo</option>
+                                    <option value="dispo">luxe</option>
+                                    <option value="nondispo">standard</option>
                                     
                                </select>
                            </div>
