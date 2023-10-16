@@ -101,7 +101,7 @@ class PlongeController extends Controller
         $centre = Centre::where('nom', $name)->first();
 
         $plonges = Plonge::where('centre_id', $centre->id)
-                    ->with('moniteur')
+                    // ->with('moniteur')
                     ->orderBy('id','desc')->first();
 
         return $plonges;
