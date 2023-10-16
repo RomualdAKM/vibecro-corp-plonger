@@ -13,7 +13,7 @@ class MaterielController extends Controller
     public function get_materiels(){
         $materiels = Materiel::orderBy('id','desc')->get();
 
-        return GetMaterielResource::collection($materiels);
+        return $materiels;
     }
 
 
