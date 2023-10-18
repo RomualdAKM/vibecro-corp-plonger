@@ -96,12 +96,10 @@ class PlongeController extends Controller
         return response()->json($response, 200);
     }
     
-    public function get_plonges_centre($name){
+    public function get_plonges_centre($id){
 
-        $centre = Centre::where('nom', $name)->first();
-
-        $plonges = Plonge::where('centre_id', $centre->id)
-                    // ->with('moniteur')
+        $plonges = Plonge::where('centre_id', $id)
+                    ->with('moniteur')
                     ->orderBy('id','desc')->first();
 
         return $plonges;
