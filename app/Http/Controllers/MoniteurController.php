@@ -26,7 +26,7 @@ class MoniteurController extends Controller
         $validator = Validator::make($request->all(), [
             'nom' => 'required',
             'bio' => 'required',
-            'note' => 'required',
+            'note' => 'required|max:5|min:0|numeric',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Assurez-vous que l'image est valide
         ]);
     
