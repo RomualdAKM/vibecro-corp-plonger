@@ -21,6 +21,11 @@ class PlongeController extends Controller
 
         return $plonges;
     }
+
+    public function get_plonge_first(){
+        $plonge = Plonge::orderBy('id','desc')->with('moniteur')->first();
+        return $plonge;
+    }
     
     // public function create_plonge(Request $request){
     //     $validator = Validator::make($request->all(), [
@@ -169,11 +174,9 @@ class PlongeController extends Controller
 }
 
     
-    public function get_plonges_centre($name){
+    public function get_plonges_centre($id){
 
-        $centre = Centre::where('nom', $name)->first();
-
-        $plonges = Plonge::where('centre_id', $centre->id)
+        $plonges = Plonge::where('centre_id', $id)
                     ->with('moniteur')
                     ->orderBy('id','desc')->first();
                 
