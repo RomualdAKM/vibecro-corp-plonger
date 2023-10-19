@@ -12,7 +12,7 @@ const form = reactive({
     prix:"",
     nb_places:"",
     description:"",
-    image:"",
+    image: null, // Pour stocker le fichier image
     statut:"",
     profondeur:"",
     temps:"",
@@ -40,52 +40,108 @@ onMounted(() => {
     getCentres()
 })
 
+// const changePhoto = (e) => {
+//     let file = e.target.files[0];
+//     let reader = new FileReader();
+//     let limit = 4024 * 4024 * 7;
+//     if (file["size"] > limit) {
+//         swal({
+//             icon: "error",
+//             title: "Ooops...",
+//             text: "You are uploading a large file",
+//         });
+//         return false;
+//     }
+
+//     reader.onloadend = (file) => {
+//         form.image = reader.result;
+//     };
+//     reader.readAsDataURL(file);
+
+// }
 const changePhoto = (e) => {
-    let file = e.target.files[0];
-    let reader = new FileReader();
-    let limit = 4024 * 4024 * 7;
-    if (file["size"] > limit) {
+    const file = e.target.files[0];
+    const limit = 4024 * 4024 * 7; // Limite de taille en octets (7 Mo dans cet exemple)
+
+    if (file.size > limit) {
         swal({
             icon: "error",
             title: "Ooops...",
-            text: "You are uploading a large file",
+            text: "Vous téléchargez un fichier trop volumineux.",
         });
         return false;
     }
 
-    reader.onloadend = (file) => {
-        form.image = reader.result;
-    };
-    reader.readAsDataURL(file);
+    // Stockez le fichier image dans la propriété "image"
+    form.image = file;
+}
+const savePlonge = async () => {
+    const formData = new FormData();
 
+    // Ajoutez les autres champs au formulaire
+    formData.append("lieu", form.lieu);
+    formData.append("duree", form.duree);
+    formData.append("prix", form.prix);
+    formData.append("nb_places", form.nb_places);
+    formData.append("description", form.description);
+    formData.append("statut", form.statut);
+    formData.append("profondeur", form.profondeur);
+    formData.append("temps", form.temps);
+    formData.append("pallier", form.pallier);
+    formData.append("moniteur_id", form.moniteur_id);
+    formData.append("centre_id", form.centre_id);
+
+    // Ajoutez le fichier image s'il est défini
+    if (form.image) {
+        formData.append("image", form.image);
+    }
+
+    // Envoyez le formulaire avec l'image
+    await axios.post('/api/create_plonge', formData).then((response) => {
+        if (response.data.success) {
+            router.push("/admin/plonge");
+            console.log('ok');
+            toast.fire({
+                icon: "success",
+                title: "Plonge enregistrée avec succès",
+            });
+        } else {
+            toast.fire({
+                icon: "error",
+                title: "Remplissez correctement tous les champs",
+            });
+            console.log('erreur', response.data.message);
+        }
+    });
 }
 
-const savePlonge = async () => {
-  await axios.post('/api/create_plonge',form).then((response) => {
-    if(response.data.success){
 
-                 router.push("/admin/plonge")
+// const savePlonge = async () => {
+//   await axios.post('/api/create_plonge',form).then((response) => {
+//     if(response.data.success){
 
-                console.log('ok')
-                  toast.fire({
-                      icon: "success",
-                      title: "Plonge enregistrer avec success",
-                  });
+//                  router.push("/admin/plonge")
 
-                }
+//                 console.log('ok')
+//                   toast.fire({
+//                       icon: "success",
+//                       title: "Plonge enregistrer avec success",
+//                   });
+
+//                 }
 
                  
-              else{
-                toast.fire({
-                      icon: "error",
-                      title: "Remplissez correctement tout les champs",
-                  });
-                console.log('errorr',response.data.message)
-              }  
+//               else{
+//                 toast.fire({
+//                       icon: "error",
+//                       title: "Remplissez correctement tout les champs",
+//                   });
+//                 console.log('errorr',response.data.message)
+//               }  
    
-  })
+//   })
 
-}
+// }
 
 </script>
 

@@ -8,55 +8,101 @@ const form = reactive({
     nom:"",
     description:"",
     prix:"",
-    image:"",
+    image: null, // Pour stocker le fichier image
 })
 
+// const changePhoto = (e) => {
+//     let file = e.target.files[0];
+//     let reader = new FileReader();
+//     let limit = 4024 * 4024 * 7;
+//     if (file["size"] > limit) {
+//         swal({
+//             icon: "error",
+//             title: "Ooops...",
+//             text: "You are uploading a large file",
+//         });
+//         return false;
+//     }
+//     reader.onloadend = (file) => {
+//         form.image = reader.result;
+//     };
+//     reader.readAsDataURL(file);
+// }
+
 const changePhoto = (e) => {
-    let file = e.target.files[0];
-    let reader = new FileReader();
-    let limit = 4024 * 4024 * 7;
-    if (file["size"] > limit) {
+    const file = e.target.files[0];
+    const limit = 4024 * 4024 * 7; // Limite de taille en octets (7 Mo dans cet exemple)
+
+    if (file.size > limit) {
         swal({
             icon: "error",
             title: "Ooops...",
-            text: "You are uploading a large file",
+            text: "Vous téléchargez un fichier trop volumineux.",
         });
         return false;
     }
-    reader.onloadend = (file) => {
-        form.image = reader.result;
-    };
-    reader.readAsDataURL(file);
+
+    // Stockez le fichier image dans la propriété "image"
+    form.image = file;
 }
-
 const saveMateriel = async () => {
-  await axios.post('/api/create_materiel',form).then((response) => {
-    if(response.data.success){
+    const formData = new FormData();
 
-                 router.push("/admin/materiels")
+    // Ajoutez les autres champs au formulaire
+    formData.append("nom", form.nom);
+    formData.append("description", form.description);
+    formData.append("prix", form.prix);
+    
+    // Ajoutez le fichier image s'il est défini
+    if (form.image) {
+        formData.append("image", form.image);
+    }
 
-                console.log('ok')
-                  toast.fire({
-                      icon: "success",
-                      title: "Moniteur enregistrer avec success",
-                  });
+    await axios.post('/api/create_materiel', formData).then((response) => {
+        if (response.data.success) {
+            router.push("/admin/materiels");
+            console.log('ok');
+            toast.fire({
+                icon: "success",
+                title: "Matériel enregistré avec succès",
+            });
+        } else {
+            toast.fire({
+                icon: "error",
+                title: "Remplissez correctement tous les champs",
+            });
+            console.log('erreur', response.data.message);
+        }
+    });
+}
+// const saveMateriel = async () => {
+//   await axios.post('/api/create_materiel',form).then((response) => {
+//     if(response.data.success){
 
-                }
+//                  router.push("/admin/materiels")
+
+//                 console.log('ok')
+//                   toast.fire({
+//                       icon: "success",
+//                       title: "Moniteur enregistrer avec success",
+//                   });
+
+//                 }
 
                  
-              else{
-                toast.fire({
-                      icon: "error",
-                      title: "Remplissez correctement tout les champs",
-                  });
-                console.log('errorr',response.data.message)
-              }
+//               else{
+//                 toast.fire({
+//                       icon: "error",
+//                       title: "Remplissez correctement tout les champs",
+//                   });
+//                 console.log('errorr',response.data.message)
+//               }
       
       
    
-  })
+//   })
 
-}
+// }
 </script>
 
 <template>

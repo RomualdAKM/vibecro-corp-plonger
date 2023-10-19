@@ -17323,48 +17323,76 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       nom: "",
       description: "",
       prix: "",
-      image: ""
+      image: null // Pour stocker le fichier image
     });
+
+    // const changePhoto = (e) => {
+    //     let file = e.target.files[0];
+    //     let reader = new FileReader();
+    //     let limit = 4024 * 4024 * 7;
+    //     if (file["size"] > limit) {
+    //         swal({
+    //             icon: "error",
+    //             title: "Ooops...",
+    //             text: "You are uploading a large file",
+    //         });
+    //         return false;
+    //     }
+    //     reader.onloadend = (file) => {
+    //         form.image = reader.result;
+    //     };
+    //     reader.readAsDataURL(file);
+    // }
+
     var changePhoto = function changePhoto(e) {
       var file = e.target.files[0];
-      var reader = new FileReader();
-      var limit = 4024 * 4024 * 7;
-      if (file["size"] > limit) {
+      var limit = 4024 * 4024 * 7; // Limite de taille en octets (7 Mo dans cet exemple)
+
+      if (file.size > limit) {
         swal({
           icon: "error",
           title: "Ooops...",
-          text: "You are uploading a large file"
+          text: "Vous téléchargez un fichier trop volumineux."
         });
         return false;
       }
-      reader.onloadend = function (file) {
-        form.image = reader.result;
-      };
-      reader.readAsDataURL(file);
+
+      // Stockez le fichier image dans la propriété "image"
+      form.image = file;
     };
     var saveMateriel = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var formData;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
-              return axios.post('/api/create_materiel', form).then(function (response) {
+              formData = new FormData(); // Ajoutez les autres champs au formulaire
+              formData.append("nom", form.nom);
+              formData.append("description", form.description);
+              formData.append("prix", form.prix);
+
+              // Ajoutez le fichier image s'il est défini
+              if (form.image) {
+                formData.append("image", form.image);
+              }
+              _context.next = 7;
+              return axios.post('/api/create_materiel', formData).then(function (response) {
                 if (response.data.success) {
                   _router_index_js__WEBPACK_IMPORTED_MODULE_1__["default"].push("/admin/materiels");
                   console.log('ok');
                   toast.fire({
                     icon: "success",
-                    title: "Moniteur enregistrer avec success"
+                    title: "Matériel enregistré avec succès"
                   });
                 } else {
                   toast.fire({
                     icon: "error",
-                    title: "Remplissez correctement tout les champs"
+                    title: "Remplissez correctement tous les champs"
                   });
-                  console.log('errorr', response.data.message);
+                  console.log('erreur', response.data.message);
                 }
               });
-            case 2:
+            case 7:
             case "end":
               return _context.stop();
           }
@@ -17374,6 +17402,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _ref2.apply(this, arguments);
       };
     }();
+    // const saveMateriel = async () => {
+    //   await axios.post('/api/create_materiel',form).then((response) => {
+    //     if(response.data.success){
+
+    //                  router.push("/admin/materiels")
+
+    //                 console.log('ok')
+    //                   toast.fire({
+    //                       icon: "success",
+    //                       title: "Moniteur enregistrer avec success",
+    //                   });
+
+    //                 }
+
+    //               else{
+    //                 toast.fire({
+    //                       icon: "error",
+    //                       title: "Remplissez correctement tout les champs",
+    //                   });
+    //                 console.log('errorr',response.data.message)
+    //               }
+
+    //   })
+
+    // }
+
     var __returned__ = {
       form: form,
       changePhoto: changePhoto,
@@ -17491,48 +17545,77 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       nom: "",
       bio: "",
       note: "",
-      image: ""
+      image: null // Pour stocker le fichier image
     });
+
+    // const changePhoto = (e) => {
+    //     let file = e.target.files[0];
+    //     let reader = new FileReader();
+    //     let limit = 4024 * 4024 * 7;
+    //     if (file["size"] > limit) {
+    //         swal({
+    //             icon: "error",
+    //             title: "Ooops...",
+    //             text: "You are uploading a large file",
+    //         });
+    //         return false;
+    //     }
+
+    //     reader.onloadend = (file) => {
+    //         form.image = reader.result;
+    //     };
+    //     reader.readAsDataURL(file);
+    // }
+
     var changePhoto = function changePhoto(e) {
       var file = e.target.files[0];
-      var reader = new FileReader();
-      var limit = 4024 * 4024 * 7;
-      if (file["size"] > limit) {
+      var limit = 4024 * 4024 * 7; // Limite de taille en octets (7 Mo dans cet exemple)
+
+      if (file.size > limit) {
         swal({
           icon: "error",
           title: "Ooops...",
-          text: "You are uploading a large file"
+          text: "Vous téléchargez un fichier trop volumineux."
         });
         return false;
       }
-      reader.onloadend = function (file) {
-        form.image = reader.result;
-      };
-      reader.readAsDataURL(file);
+
+      // Stockez le fichier image dans la propriété "image"
+      form.image = file;
     };
     var saveMoniteur = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var formData;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
-              return axios.post('/api/create_moniteur', form).then(function (response) {
+              formData = new FormData(); // Ajoutez les autres champs au formulaire
+              formData.append("nom", form.nom);
+              formData.append("bio", form.bio);
+              formData.append("note", form.note);
+
+              // Ajoutez le fichier image s'il est défini
+              if (form.image) {
+                formData.append("image", form.image);
+              }
+              _context.next = 7;
+              return axios.post('/api/create_moniteur', formData).then(function (response) {
                 if (response.data.success) {
                   _router_index_js__WEBPACK_IMPORTED_MODULE_1__["default"].push("/admin/moniteurs");
                   console.log('ok');
                   toast.fire({
                     icon: "success",
-                    title: "Moniteur enregistrer avec success"
+                    title: "Moniteur enregistré avec succès"
                   });
                 } else {
                   toast.fire({
                     icon: "error",
-                    title: "Remplissez correctement tout les champs"
+                    title: "Remplissez correctement tous les champs"
                   });
-                  console.log('errorr', response.data.message);
+                  console.log('erreur', response.data.message);
                 }
               });
-            case 2:
+            case 7:
             case "end":
               return _context.stop();
           }
@@ -17542,6 +17625,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _ref2.apply(this, arguments);
       };
     }();
+
+    // const saveMoniteur = async () => {
+    //   await axios.post('/api/create_moniteur',form).then((response) => {
+    //     if(response.data.success){
+
+    //                  router.push("/admin/moniteurs")
+
+    //                 console.log('ok')
+    //                   toast.fire({
+    //                       icon: "success",
+    //                       title: "Moniteur enregistrer avec success",
+    //                   });
+
+    //                 }
+
+    //               else{
+    //                 toast.fire({
+    //                       icon: "error",
+    //                       title: "Remplissez correctement tout les champs",
+    //                   });
+    //                 console.log('errorr',response.data.message)
+    //               }
+
+    //   })
+
+    // }
+
     var __returned__ = {
       form: form,
       changePhoto: changePhoto,
@@ -17663,7 +17773,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       prix: "",
       nb_places: "",
       description: "",
-      image: "",
+      image: null,
+      // Pour stocker le fichier image
       statut: "",
       profondeur: "",
       temps: "",
@@ -17715,46 +17826,85 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       getMoniteurs();
       getCentres();
     });
+
+    // const changePhoto = (e) => {
+    //     let file = e.target.files[0];
+    //     let reader = new FileReader();
+    //     let limit = 4024 * 4024 * 7;
+    //     if (file["size"] > limit) {
+    //         swal({
+    //             icon: "error",
+    //             title: "Ooops...",
+    //             text: "You are uploading a large file",
+    //         });
+    //         return false;
+    //     }
+
+    //     reader.onloadend = (file) => {
+    //         form.image = reader.result;
+    //     };
+    //     reader.readAsDataURL(file);
+
+    // }
     var changePhoto = function changePhoto(e) {
       var file = e.target.files[0];
-      var reader = new FileReader();
-      var limit = 4024 * 4024 * 7;
-      if (file["size"] > limit) {
+      var limit = 4024 * 4024 * 7; // Limite de taille en octets (7 Mo dans cet exemple)
+
+      if (file.size > limit) {
         swal({
           icon: "error",
           title: "Ooops...",
-          text: "You are uploading a large file"
+          text: "Vous téléchargez un fichier trop volumineux."
         });
         return false;
       }
-      reader.onloadend = function (file) {
-        form.image = reader.result;
-      };
-      reader.readAsDataURL(file);
+
+      // Stockez le fichier image dans la propriété "image"
+      form.image = file;
     };
     var savePlonge = /*#__PURE__*/function () {
       var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+        var formData;
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
-              _context3.next = 2;
-              return axios.post('/api/create_plonge', form).then(function (response) {
+              formData = new FormData(); // Ajoutez les autres champs au formulaire
+              formData.append("lieu", form.lieu);
+              formData.append("duree", form.duree);
+              formData.append("prix", form.prix);
+              formData.append("nb_places", form.nb_places);
+              formData.append("description", form.description);
+              formData.append("statut", form.statut);
+              formData.append("profondeur", form.profondeur);
+              formData.append("temps", form.temps);
+              formData.append("pallier", form.pallier);
+              formData.append("moniteur_id", form.moniteur_id);
+              formData.append("centre_id", form.centre_id);
+
+              // Ajoutez le fichier image s'il est défini
+              if (form.image) {
+                formData.append("image", form.image);
+              }
+
+              // Envoyez le formulaire avec l'image
+              _context3.next = 15;
+              return axios.post('/api/create_plonge', formData).then(function (response) {
                 if (response.data.success) {
                   _router_index_js__WEBPACK_IMPORTED_MODULE_1__["default"].push("/admin/plonge");
                   console.log('ok');
                   toast.fire({
                     icon: "success",
-                    title: "Plonge enregistrer avec success"
+                    title: "Plonge enregistrée avec succès"
                   });
                 } else {
                   toast.fire({
                     icon: "error",
-                    title: "Remplissez correctement tout les champs"
+                    title: "Remplissez correctement tous les champs"
                   });
-                  console.log('errorr', response.data.message);
+                  console.log('erreur', response.data.message);
                 }
               });
-            case 2:
+            case 15:
             case "end":
               return _context3.stop();
           }
@@ -17764,6 +17914,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _ref4.apply(this, arguments);
       };
     }();
+
+    // const savePlonge = async () => {
+    //   await axios.post('/api/create_plonge',form).then((response) => {
+    //     if(response.data.success){
+
+    //                  router.push("/admin/plonge")
+
+    //                 console.log('ok')
+    //                   toast.fire({
+    //                       icon: "success",
+    //                       title: "Plonge enregistrer avec success",
+    //                   });
+
+    //                 }
+
+    //               else{
+    //                 toast.fire({
+    //                       icon: "error",
+    //                       title: "Remplissez correctement tout les champs",
+    //                   });
+    //                 console.log('errorr',response.data.message)
+    //               }  
+
+    //   })
+
+    // }
+
     var __returned__ = {
       moniteurs: moniteurs,
       centres: centres,
@@ -19930,7 +20107,7 @@ var _hoisted_12 = /*#__PURE__*/_withScopeId(function () {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Base"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", null, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "file",
-    "class": "form-control",
+    name: "image",
     onChange: $setup.changePhoto
   }, null, 32 /* HYDRATE_EVENTS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
