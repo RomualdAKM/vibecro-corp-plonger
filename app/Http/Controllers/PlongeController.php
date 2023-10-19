@@ -23,7 +23,7 @@ class PlongeController extends Controller
     }
 
     public function get_plonge_first(){
-        $plonge = Plonge::orderBy('id','desc')->first();
+        $plonge = Plonge::orderBy('id','desc')->with('moniteur')->first();
         return $plonge;
     }
     
