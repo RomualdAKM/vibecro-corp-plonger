@@ -99,7 +99,7 @@ class PlongeController extends Controller
     public function get_plonges_centre($id){
 
         $plonges = Plonge::where('centre_id', $id)
-                    // ->with('moniteur')
+                    ->with('moniteur')
                     ->orderBy('id','desc')->first();
 
         return $plonges;
