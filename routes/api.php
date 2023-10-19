@@ -72,8 +72,9 @@ Route::controller(MoniteurController::class)
 Route::controller(PlongeController::class)
         ->group(function(){
         Route::post('create_plonge','create_plonge');
-       Route::get('get_plonges','get_plonges');
-       Route::get('get_plonges_centre/{id}','get_plonges_centre');
+        Route::get('get_plonges','get_plonges');
+        Route::get('get_plonge_first','get_plonge_first');
+        Route::get('get_plonges_centre/{id}','get_plonges_centre');
     });
 
     

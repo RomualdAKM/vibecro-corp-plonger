@@ -21,6 +21,11 @@ class PlongeController extends Controller
 
         return $plonges;
     }
+
+    public function get_plonge_first(){
+        $plonge = Plonge::orderBy('id','desc')->first();
+        return $plonge;
+    }
     
     public function create_plonge(Request $request){
         $validator = Validator::make($request->all(), [
