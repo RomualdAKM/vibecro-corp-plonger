@@ -18,7 +18,7 @@ const form = reactive({
     instagram:"",
     latitude:"",
     longitude:"",
-   
+    image:"",
 })
 
 
@@ -123,6 +123,12 @@ const saveCentre = async () => {
                                <label for="francaisTextarea" class="form-label">Description</label>
                                <textarea class="form-control"  rows="2" v-model="form.description"></textarea>
                            </div>
+                           
+                           <div class="mb-3 form-group">
+                               <label for="francaisInput" class="form-label">Logo</label>
+                               <input type="file" class="form-control" v-model="form.image" >
+                           </div>
+
                            <button type="button" @click="saveCentre()"  class="btn btn-primary mt-2">Valider</button>
                        </form>
                     </div>

@@ -35,7 +35,7 @@ class CentreController extends Controller
             'instagram' => 'required',
             'latitude' => 'required',
             'longitude' => 'required',
-
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -47,7 +47,17 @@ class CentreController extends Controller
                 $response,
                 200
             );
-        }    
+        }
+        
+    // Traitez l'image
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $name = time() . '.' . $image->getClientOriginalExtension();
+        $upload_path = public_path('images/centres');
+        $image->move($upload_path, $name);
+    } else {
+        $name = null;
+    }
 
         $centre = new Centre();
         $centre->nom = $request->nom;
@@ -61,6 +71,7 @@ class CentreController extends Controller
         $centre->facebook = $request->facebook;
         $centre->twitter = $request->twitter;
         $centre->instagram = $request->instagram;
+        $centre->image = $name; // Associez le nom du fichier
         $centre->save();
 
         $map = new Map();
