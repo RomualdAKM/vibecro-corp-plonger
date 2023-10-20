@@ -78,7 +78,7 @@ class CentreController extends Controller
         $map->centre_id = $centre->id;
         $map->latitude = $request->latitude;
         $map->longitude = $request->longitude;
-        $map->status = $request->status;
+        $map->status = $request->statut;
         $map->save();
 
         $response = [

@@ -17090,15 +17090,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       titre: "",
       facebook: "",
       twitter: "",
-      instagram: ""
+      instagram: "",
+      latitude: "",
+      longitude: "",
+      image: ""
     });
+    var changePhoto = function changePhoto(e) {
+      var file = e.target.files[0];
+      var limit = 4024 * 4024 * 7; // Limite de taille en octets (7 Mo dans cet exemple)
+
+      if (file.size > limit) {
+        swal({
+          icon: "error",
+          title: "Ooops...",
+          text: "Vous téléchargez un fichier trop volumineux."
+        });
+        return false;
+      }
+
+      // Stockez le fichier image dans la propriété "image"
+      form.image = file;
+    };
     var saveCentre = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var formData;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
-              return axios.post('/api/create_centre', form).then(function (response) {
+              formData = new FormData(); // Ajoutez les autres champs au formulaire
+              formData.append("nom", form.nom);
+              formData.append("lieu", form.lieu);
+              formData.append("statut", form.statut);
+              formData.append("responsable", form.responsable);
+              formData.append("contact", form.contact);
+              formData.append("email", form.email);
+              formData.append("description", form.description);
+              formData.append("titre", form.titre);
+              formData.append("facebook", form.facebook);
+              formData.append("twitter", form.twitter);
+              formData.append("instagram", form.instagram);
+              formData.append("latitude", form.latitude);
+              formData.append("longitude", form.longitude);
+
+              // Ajoutez le fichier image s'il est défini
+              if (form.image) {
+                formData.append("image", form.image);
+              }
+              _context.next = 17;
+              return axios.post('/api/create_centre', formData).then(function (response) {
                 if (response.data.success) {
                   _router_index_js__WEBPACK_IMPORTED_MODULE_1__["default"].push("/admin/centres");
                   console.log('ok');
@@ -17111,10 +17150,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     icon: "error",
                     title: "Remplissez correctement tout les champs"
                   });
-                  console.log('errorr', response.data.message);
+                  console.log('error', response.data.message);
                 }
               });
-            case 2:
+            case 17:
             case "end":
               return _context.stop();
           }
@@ -17126,6 +17165,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }();
     var __returned__ = {
       form: form,
+      changePhoto: changePhoto,
       saveCentre: saveCentre,
       Base: _base_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
       get router() {
@@ -19625,27 +19665,54 @@ var _hoisted_24 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "for": "francaisInput",
     "class": "form-label"
-  }, "Statut", -1 /* HOISTED */);
+  }, "Latitude", -1 /* HOISTED */);
 });
-var _hoisted_25 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-    value: "dispo"
-  }, "dispo", -1 /* HOISTED */);
-});
-var _hoisted_26 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-    value: "nondispo"
-  }, "nondispo", -1 /* HOISTED */);
-});
-var _hoisted_27 = [_hoisted_25, _hoisted_26];
-var _hoisted_28 = {
+var _hoisted_25 = {
   "class": "mb-3 form-group"
 };
+var _hoisted_26 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    "for": "francaisInput",
+    "class": "form-label"
+  }, "Longitude", -1 /* HOISTED */);
+});
+var _hoisted_27 = {
+  "class": "mb-3 form-group"
+};
+var _hoisted_28 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    "for": "francaisInput",
+    "class": "form-label"
+  }, "Statut", -1 /* HOISTED */);
+});
 var _hoisted_29 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+    value: "explore"
+  }, "Explore", -1 /* HOISTED */);
+});
+var _hoisted_30 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+    value: "nonexplore"
+  }, "Non explore", -1 /* HOISTED */);
+});
+var _hoisted_31 = [_hoisted_29, _hoisted_30];
+var _hoisted_32 = {
+  "class": "mb-3 form-group"
+};
+var _hoisted_33 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "for": "francaisTextarea",
     "class": "form-label"
   }, "Description", -1 /* HOISTED */);
+});
+var _hoisted_34 = {
+  "class": "mb-3 form-group"
+};
+var _hoisted_35 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    "for": "francaisInput",
+    "class": "form-label"
+  }, "Logo", -1 /* HOISTED */);
 });
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -19703,20 +19770,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
       return $setup.form.instagram = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.instagram]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.instagram]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
     "class": "form-control",
     "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+      return $setup.form.latitude = $event;
+    })
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.latitude]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [_hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    "class": "form-control",
+    "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+      return $setup.form.longitude = $event;
+    })
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.longitude]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    "class": "form-control",
+    "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
       return $setup.form.statut = $event;
     })
-  }, _hoisted_27, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.form.statut]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [_hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+  }, _hoisted_31, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.form.statut]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [_hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
     "class": "form-control",
     rows: "2",
-    "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+    "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
       return $setup.form.description = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.description]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.description]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [_hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "file",
+    "class": "form-control",
+    onChange: $setup.changePhoto
+  }, null, 32 /* HYDRATE_EVENTS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
-    onClick: _cache[11] || (_cache[11] = function ($event) {
+    onClick: _cache[13] || (_cache[13] = function ($event) {
       return $setup.saveCentre();
     }),
     "class": "btn btn-primary mt-2"
@@ -24334,7 +24417,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n/* Styles personnalisés pour le sidebar */\n#sidebar[data-v-07fc1a24] {\r\n    height: 100%;\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 250px;\r\n    padding-top: 20px;\r\n    background-color: #333;\r\n    color: #fff;\n}\n#sidebar ul.nav.flex-column[data-v-07fc1a24] {\r\n    padding-left: 20px;\n}\n#sidebar ul.nav.flex-column .nav-item[data-v-07fc1a24] {\r\n    margin-bottom: 10px;\n}\n#sidebar ul.nav.flex-column .nav-item a[data-v-07fc1a24] {\r\n    color: #fff;\n}\n#sidebar ul.nav.flex-column .nav-item a[data-v-07fc1a24]:hover {\r\n    color: #f8f9fa;\n}\r\n\r\n/* Styles pour le contenu principal */\nmain[data-v-07fc1a24] {\r\n    margin-left: 250px;\r\n    padding: 20px;\n}\r\n\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n/* Styles personnalisés pour le sidebar */\n#sidebar[data-v-07fc1a24] {\n    height: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 250px;\n    padding-top: 20px;\n    background-color: #333;\n    color: #fff;\n}\n#sidebar ul.nav.flex-column[data-v-07fc1a24] {\n    padding-left: 20px;\n}\n#sidebar ul.nav.flex-column .nav-item[data-v-07fc1a24] {\n    margin-bottom: 10px;\n}\n#sidebar ul.nav.flex-column .nav-item a[data-v-07fc1a24] {\n    color: #fff;\n}\n#sidebar ul.nav.flex-column .nav-item a[data-v-07fc1a24]:hover {\n    color: #f8f9fa;\n}\n\n/* Styles pour le contenu principal */\nmain[data-v-07fc1a24] {\n    margin-left: 250px;\n    padding: 20px;\n}\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

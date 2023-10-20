@@ -21,9 +21,48 @@ const form = reactive({
     image:"",
 })
 
+const changePhoto = (e) => {
+    const file = e.target.files[0];
+    const limit = 4024 * 4024 * 7; // Limite de taille en octets (7 Mo dans cet exemple)
+
+    if (file.size > limit) {
+        swal({
+            icon: "error",
+            title: "Ooops...",
+            text: "Vous téléchargez un fichier trop volumineux.",
+        });
+        return false;
+    }
+
+    // Stockez le fichier image dans la propriété "image"
+    form.image = file;
+}
 
 const saveCentre = async () => {
-  await axios.post('/api/create_centre',form).then((response) => {
+    const formData = new FormData();
+
+    // Ajoutez les autres champs au formulaire
+    formData.append("nom", form.nom);
+    formData.append("lieu", form.lieu);
+    formData.append("statut", form.statut);
+    formData.append("responsable", form.responsable);
+    formData.append("contact", form.contact);
+    formData.append("email", form.email);
+    formData.append("description", form.description);
+    formData.append("titre", form.titre);
+    formData.append("facebook", form.facebook);
+    formData.append("twitter", form.twitter);
+    formData.append("instagram", form.instagram);
+    formData.append("latitude", form.latitude);
+    formData.append("longitude", form.longitude);
+
+   // Ajoutez le fichier image s'il est défini
+   if (form.image) {
+        formData.append("image", form.image);
+    }
+
+   
+  await axios.post('/api/create_centre',formData).then((response) => {
     if(response.data.success){
 
                  router.push("/admin/centres")
@@ -126,7 +165,7 @@ const saveCentre = async () => {
                            
                            <div class="mb-3 form-group">
                                <label for="francaisInput" class="form-label">Logo</label>
-                               <input type="file" class="form-control" v-model="form.image" >
+                               <input type="file" class="form-control" @change="changePhoto" >
                            </div>
 
                            <button type="button" @click="saveCentre()"  class="btn btn-primary mt-2">Valider</button>
