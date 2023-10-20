@@ -16,6 +16,8 @@ const form = reactive({
     facebook:"",
     twitter:"",
     instagram:"",
+    latitude:"",
+    longitude:"",
    
 })
 
@@ -40,7 +42,7 @@ const saveCentre = async () => {
                       icon: "error",
                       title: "Remplissez correctement tout les champs",
                   });
-                console.log('errorr',response.data.message)
+                console.log('error',response.data.message)
               }
       
       
@@ -99,12 +101,20 @@ const saveCentre = async () => {
                                <label for="francaisInput" class="form-label">instagram</label>
                                <input type="text" class="form-control" v-model="form.instagram" >
                            </div>
+                           <div class="mb-3 form-group">
+                               <label for="francaisInput" class="form-label">Latitude</label>
+                               <input type="text" class="form-control" v-model="form.latitude" >
+                           </div>
+                           <div class="mb-3 form-group">
+                               <label for="francaisInput" class="form-label">Longitude</label>
+                               <input type="text" class="form-control" v-model="form.longitude" >
+                           </div>
                            
                            <div class="mb-3 form-group">
                                <label for="francaisInput" class="form-label">Statut</label>
                                <select class="form-control" v-model="form.statut">
-                                    <option value="dispo">dispo</option>
-                                    <option value="nondispo">nondispo</option>
+                                    <option value="explore">Explore</option>
+                                    <option value="nonexplore">Non explore</option>
                                     
                                </select>
                            </div>

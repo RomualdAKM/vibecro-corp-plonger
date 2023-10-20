@@ -82,6 +82,7 @@ Route::controller(CentreController::class)
     ->group(function () {
         Route::post('create_centre', 'create_centre');
         Route::get('get_centres', 'get_centres');
+        Route::get('get_centre/{id}', 'get_centre');    
     });
 
 Route::controller(MaterielController::class)

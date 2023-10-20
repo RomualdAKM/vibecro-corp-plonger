@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Centre;
 use Illuminate\Http\Request;
 use App\Http\Resources\GetCentreResource;
+use App\Models\Map;
 use Illuminate\Support\Facades\Validator;
 
 class CentreController extends Controller
@@ -17,6 +18,11 @@ class CentreController extends Controller
         //     'centres' => $centres
         // ],200);
         return $centres;
+    }
+
+    public function get_centre($id){
+        $centre = Centre::find($id);
+        return $centre;
     }
     
     public function create_centre(Request $request){
@@ -32,7 +38,9 @@ class CentreController extends Controller
             'facebook' => 'required',
             'twitter' => 'required',
             'instagram' => 'required',
-          
+            'latitude' => 'required',
+            'longitude' => 'required',
+
         ]);
 
         if ($validator->fails()) {
@@ -59,6 +67,13 @@ class CentreController extends Controller
         $centre->twitter = $request->twitter;
         $centre->instagram = $request->instagram;
         $centre->save();
+
+        $map = new Map();
+        $map->centre_id = $centre->id;
+        $map->latitude = $request->latitude;
+        $map->longitude = $request->longitude;
+        $map->status = $request->status;
+        $map->save();
 
         $response = [
             'success' => true,
