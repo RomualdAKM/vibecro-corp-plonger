@@ -178,6 +178,7 @@ class PlongeController extends Controller
 
         $plonges = Plonge::where('centre_id', $id)
                     ->with('moniteur')
+                    ->with('centre')
                     ->orderBy('id','desc')->first();
                 
         return $plonges;

@@ -19,11 +19,6 @@ class CentreController extends Controller
         // ],200);
         return $centres;
     }
-
-    public function get_centre($id){
-        $centre = Centre::find($id);
-        return $centre;
-    }
     
     public function create_centre(Request $request){
         $validator = Validator::make($request->all(), [
