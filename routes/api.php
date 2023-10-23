@@ -34,6 +34,8 @@ Route::controller(AuthController::class)->group(function () {
 
     Route::post('login', 'login');
     Route::post('register', 'register');
+    Route::get('get_user/{id}', 'show');
+
 });
 
 Route::controller(PremieresectionController::class)

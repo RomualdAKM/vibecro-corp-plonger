@@ -79,4 +79,8 @@ class AuthController extends Controller
             return response()->json($response);
         }
     }
+
+    public function show($id) {
+        return User::find($id);
+    }
 }
