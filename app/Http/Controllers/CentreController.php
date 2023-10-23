@@ -71,15 +71,10 @@ class CentreController extends Controller
         $centre->facebook = $request->facebook;
         $centre->twitter = $request->twitter;
         $centre->instagram = $request->instagram;
+        $centre->latitude = $request->latitude;
+        $centre->longitude = $request->longitude;
         $centre->image = $name; // Associez le nom du fichier
         $centre->save();
-
-        $map = new Map();
-        $map->centre_id = $centre->id;
-        $map->latitude = $request->latitude;
-        $map->longitude = $request->longitude;
-        $map->status = $request->statut;
-        $map->save();
 
         $response = [
             'success' => true,

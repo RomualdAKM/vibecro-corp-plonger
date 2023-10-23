@@ -11,9 +11,9 @@ class MapController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($centre_id)
     {
-        //
+        return Map::where('centre_id', $centre_id)->get();
     }
 
     /**
@@ -29,7 +29,20 @@ class MapController extends Controller
      */
     public function store(StoreMapRequest $request)
     {
-        //
+        $map = new Map();
+        $map->centre_id = $request->centre_id;
+        $map->latitude = $request->latitude;
+        $map->longitude = $request->longitude;
+        $map->status = $request->status;
+        $map->save();
+
+        $response = [
+            'success' => true,
+
+            'message' => "centre register successfully"
+        ];
+
+        return response()->json($response, 200);
     }
 
     /**

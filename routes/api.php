@@ -10,6 +10,8 @@ use App\Http\Controllers\MoniteurController;
 use App\Http\Controllers\PlongeUserController;
 use App\Http\Controllers\MaterielPlongeController;
 use App\Http\Controllers\DeuxiemesectionController;
+use App\Http\Controllers\ExplorationController;
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\PremieresectionController;
 use App\Http\Controllers\QuatriemesectionController;
 use App\Http\Controllers\TroisiemesectionController;
@@ -35,7 +37,6 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('login', 'login');
     Route::post('register', 'register');
     Route::get('get_user/{email}', 'show');
-
 });
 
 Route::controller(PremieresectionController::class)
@@ -102,4 +103,28 @@ Route::controller(PlongeUserController::class)
     ->group(function () {
         Route::post('participant_store', 'store');
         Route::get('participants/{plonge_id}', 'index');
+    });
+
+Route::controller(MapController::class)
+    ->group(function () {
+        Route::get('map_pointer/{centre_id}', 'index');
+        Route::post('map_pointer', 'store');
+    });
+
+Route::controller(PlongeMaterielController::class)
+    ->group(function () {
+        Route::get('map_pointer/{centre_id}', 'index');
+        Route::post('map_pointer', 'store');
+    });
+
+Route::controller(ExplorationController::class)
+    ->group(function () {
+        Route::get('exploration', 'index');
+        Route::post('exploration', 'store');
+    });
+
+Route::controller(ForSaleMatController::class)
+    ->group(function () {
+        Route::get('for_sale_mat', 'index');
+        Route::post('for_sale_mat', 'store');
     });
