@@ -6,6 +6,7 @@ use App\Models\PlongeUser;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StorePlongeUserRequest;
 use App\Http\Requests\UpdatePlongeUserRequest;
+use App\Models\User;
 
 class PlongeUserController extends Controller
 {
@@ -14,7 +15,12 @@ class PlongeUserController extends Controller
      */
     public function index($id)
     {
-        return PlongeUser::where('plonge_id', $id)->with('users')->get();
+        $users = [];
+        $plonge_users = PlongeUser::where('plonge_id', $id)->get();
+        foreach ($plonge_users as $plonge_user) {
+            $users[] = User::find($plonge_user->user_id);
+        }
+        return $users;
     }
 
     /**

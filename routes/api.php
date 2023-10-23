@@ -7,7 +7,7 @@ use App\Http\Controllers\CentreController;
 use App\Http\Controllers\PlongeController;
 use App\Http\Controllers\MaterielController;
 use App\Http\Controllers\MoniteurController;
-use App\Http\Controllers\ParticipantController;
+use App\Http\Controllers\PlongeUserController;
 use App\Http\Controllers\MaterielPlongeController;
 use App\Http\Controllers\DeuxiemesectionController;
 use App\Http\Controllers\PremieresectionController;
@@ -96,7 +96,7 @@ Route::controller(MaterielPlongeController::class)
         Route::get('get_plonge_materiels/{plonge_id}', 'get_plonge_materiels');
     });
 
-Route::controller(ParticipantController::class)
+Route::controller(PlongeUserController::class)
     ->group(function () {
         Route::post('participant_store', 'store');
         Route::get('participants/{plonge_id}', 'index');

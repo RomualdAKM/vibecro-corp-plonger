@@ -45,8 +45,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function plonges():BelongsToMany
-        {
-            return $this->belongsToMany(Plonge::class);
-        }
+    public function plonges(): BelongsToMany
+    {
+        return $this->belongsToMany(Plonge::class, 'plonge_users');
+    }
 }
