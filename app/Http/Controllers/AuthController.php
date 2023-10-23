@@ -80,7 +80,7 @@ class AuthController extends Controller
         }
     }
 
-    public function show($id) {
-        return User::find($id);
+    public function show($email) {
+        return User::where('email', $email)->first();
     }
 }
