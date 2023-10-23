@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Participant;
+use App\Models\PlongeUser;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\StoreParticipantRequest;
-use App\Http\Requests\UpdateParticipantRequest;
+use App\Http\Requests\StorePlongeUserRequest;
+use App\Http\Requests\UpdatePlongeUserRequest;
 
-class ParticipantController extends Controller
+class PlongeUserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index($id)
     {
-        return Participant::where('plonge_id', $id)->get();
+        return PlongeUser::where('plonge_id', $id)->with('users')->get();
     }
 
     /**
@@ -28,7 +28,7 @@ class ParticipantController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreParticipantRequest $request)
+    public function store(StorePlongeUserRequest $request)
     {
 
         $validator = Validator::make($request->all(), [
@@ -47,17 +47,14 @@ class ParticipantController extends Controller
             );
         }
 
-        $participant = new Participant();
-        $participant->user_id = $request->user_id;
-        $participant->plonge_id = $request->plonge_id;
-        $participant->save();
-
-        $success['token'] = $participant->createToken('MyApp')->plainTextToken;
+        $PlongeUser = new PlongeUser();
+        $PlongeUser->user_id = $request->user_id;
+        $PlongeUser->plonge_id = $request->plonge_id;
+        $PlongeUser->save();
 
         $response = [
             'success' => true,
-            'data' => $success,
-            'message' => "User register successfully"
+            'message' => "PlongeUser registered successfully"
         ];
 
         return response()->json($response, 200);
@@ -66,7 +63,7 @@ class ParticipantController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Participant $participant)
+    public function show(PlongeUser $PlongeUser)
     {
         //
     }
@@ -74,7 +71,7 @@ class ParticipantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Participant $participant)
+    public function edit(PlongeUser $PlongeUser)
     {
         //
     }
@@ -82,7 +79,7 @@ class ParticipantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateParticipantRequest $request, Participant $participant)
+    public function update(UpdatePlongeUserRequest $request, PlongeUser $PlongeUser)
     {
         //
     }
@@ -90,7 +87,7 @@ class ParticipantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Participant $participant)
+    public function destroy(PlongeUser $PlongeUser)
     {
         //
     }

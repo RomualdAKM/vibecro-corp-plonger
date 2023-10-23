@@ -14,15 +14,17 @@ class Plonge extends Model
 {
     use HasFactory;
 
-    public function moniteur():BelongsTo{
+    public function moniteur(): BelongsTo
+    {
         return $this->belongsTo(Moniteur::class);
     }
-    public function centre():BelongsTo{
+    public function centre(): BelongsTo
+    {
         return $this->belongsTo(Centre::class);
     }
 
-    public function users():BelongsToMany
-{
-    return $this->belongsToMany(User::class);
-}
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
