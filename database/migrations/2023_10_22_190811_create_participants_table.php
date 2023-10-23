@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('plonges_users', function (Blueprint $table) {
-            $table->foreignId('plonge_id')->constrained()->cascadeOnDelete();
+        Schema::create('participants', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('plonge_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('plonges_users');
+        Schema::dropIfExists('participants');
     }
 };
