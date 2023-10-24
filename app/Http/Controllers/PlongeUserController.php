@@ -79,7 +79,7 @@ class PlongeUserController extends Controller
      */
     public function edit(PlongeUser $PlongeUser)
     {
-        //
+        
     }
 
     /**

@@ -2,16 +2,17 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CentreController;
 use App\Http\Controllers\PlongeController;
 use App\Http\Controllers\MaterielController;
 use App\Http\Controllers\MoniteurController;
+use App\Http\Controllers\ForSaleMatController;
 use App\Http\Controllers\PlongeUserController;
+use App\Http\Controllers\ExplorationController;
 use App\Http\Controllers\MaterielPlongeController;
 use App\Http\Controllers\DeuxiemesectionController;
-use App\Http\Controllers\ExplorationController;
-use App\Http\Controllers\MapController;
 use App\Http\Controllers\PremieresectionController;
 use App\Http\Controllers\QuatriemesectionController;
 use App\Http\Controllers\TroisiemesectionController;

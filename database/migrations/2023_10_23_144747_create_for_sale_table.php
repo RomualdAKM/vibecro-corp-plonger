@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('for_sale', function (Blueprint $table) {
             $table->id();
             $table->string('email');
-            $table->string('nom');
+            $table->string('name');
             $table->string('material');
             $table->string('image');
-            $table->date('date');
+            $table->string('price');
             $table->timestamps();
         });
     }

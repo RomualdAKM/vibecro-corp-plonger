@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ExplorationController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      */
     public function index()
@@ -38,11 +38,22 @@ class ExplorationController extends Controller
             return response()->json($response, 200);
         }
 
+        // Traitez l'image
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $upload_path = public_path('images/explorations');
+            $image->move($upload_path, $name);
+        } else {
+            $name = null;
+        }
+
         $exploration = new Exploration();
         $exploration->email = $request->email;
         $exploration->name = $request->name;
         $exploration->location = $request->location;
         $exploration->date = $request->date;
+        $exploration->image = $name; // Associez le nom du fichier
         $exploration->save();
 
         $response = [

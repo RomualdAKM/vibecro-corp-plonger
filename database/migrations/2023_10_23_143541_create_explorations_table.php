@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('explorations', function (Blueprint $table) {
             $table->id();
             $table->string('email');
-            $table->string('nom');
-            $table->string('lieu');
+            $table->string('name');
+            $table->string('location');
             $table->string('image');
-            $table->date('date');
+            $table->string('date');
             $table->timestamps();
         });
     }
